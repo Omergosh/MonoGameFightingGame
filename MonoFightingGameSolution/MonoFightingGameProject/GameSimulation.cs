@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MonoFightingGameProject.utils;
+using MonoFightingGameProject.ActionStates;
 
 namespace MonoFightingGameProject
 {
@@ -50,7 +51,6 @@ namespace MonoFightingGameProject
                 ref PhysicsComponent component = ref gameState.physicsComponents[i];
                 component.position.Add(component.velocity);
                 component.velocity.Add(component.acceleration);
-
             }
         }
 

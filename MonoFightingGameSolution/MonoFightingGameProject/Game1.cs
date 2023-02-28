@@ -17,10 +17,11 @@ namespace MonoFightingGameProject
         public const int INPUT_DOWN = (1 << 3);
     }
 
-    public struct GameObject
+    public struct ActionStateFuncs
     {
-        public int x;
-        public int y;
+        public Action OnStart;
+        public Action OnUpdate;
+        public Action OnEnd;
     }
 
     public class Game1 : Game
@@ -37,6 +38,12 @@ namespace MonoFightingGameProject
 
         long inputs;
         public GameState gameState;
+        public ActionStateFuncs TestFuncs;
+
+        public void TestOnStart()
+        {
+            Console.WriteLine("on start func test");
+        }
 
         public Game1()
         {
@@ -62,6 +69,13 @@ namespace MonoFightingGameProject
                 x = 350,
                 y = 200
             };
+
+            TestFuncs = new ActionStateFuncs()
+            {
+                OnStart = TestOnStart
+            };
+
+            TestFuncs.OnStart();
 
             base.Initialize();
         }
